@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台风致灾</title>
+    <link rel="stylesheet" href="script/lib/vant/index.css" />
+    <script src="script/lib/vant/vue.js"></script>
+    <script src="script/lib/vant/vant.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+      body{
+        background-color:#e9f0f7;
+        background-image: url(images/juece/tf/bg.png);
+        background-repeat: no-repeat;
+        background-size:contain;
+        font-size: 12px;
+      }
+      #app{
+        padding-top: 150px;
+        position: relative;
+      }
+      .zero{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 15px;
+      }
+      .zero img{
+        box-sizing: border-box;
+        width: 98%;
+      }
+      .one{
+        margin: 10px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .ones{
+           color: blue;
+      }
+      .onex{
+        width: 49%;
+        border-radius: 5px;
+        padding-top: 10px;
+        background-color: #fff;
+      }
+     .onex img{
+     padding:  15px 15px;
+        width: 100%;
+        box-sizing: border-box;
+     }
+     .ones{
+       margin-left: 15px;
+     }
+     .one0{
+       padding: 10px 15px ;
+        line-height: 20px;
+        box-sizing: border-box;
+     }
+     .one0 span{
+        color: rgb(16, 73, 231);
+     }
+     .my-swipe .van-swipe-item {
+    display: flex;
+    justify-content: space-between;
+  }
+  .three{
+    position: relative;
+    padding: 10px 10px;
+  }
+  .left{
+    position: absolute;
+     top: 50%;
+     left: 0;
+  }
+  .right{
+    position: absolute;
+     top: 50%;
+     right: 0;
+  }
+  .left img{
+        width: 10px;
+  }
+  .right img{
+    width: 10px;
+  }
+
+  .five{
+        margin: 10px 10px;
+  }
+  .fivex{
+     width: 100%;
+  }
+  .xxt{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .xxt img{
+       width: 30px;
+  }
+  .tk{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.5);
+       position: fixed;
+       left: 0;
+       top: 0;
+  }
+
+    </style>
+</head>
+<body>
+    <div id="app" >
+        <div class="zero">
+            <img src="images/juece/qdl/zxyb1.png" alt="">
+        </div>
+         <div class="one">
+            <div class="onex">
+                <div class="ones">降水</div>
+                <div class="one0">
+                  受台风“梅花”外围及本体影响，14-15日本市大部有暴雨、局部大暴雨。主要降水时段出现在14日傍晚到15日早晨
+                   <span @click="sub(0)" :v-model="code">...展开</span>
+                </div>
+                <img src="images/juece/tf/ybjs.gif" alt="">
+            </div>
+            <div class="onex">
+                <div class="ones">大风</div>
+                <div class="one0">
+                  本市今天（14日）下午起风力逐渐增大到5级阵风6～7级，沿江沿海地区阵风7～9级，最强影响时段出现在今天
+                    <span @click="sub(1)" :v-model="code">...展开</span>
+                </div>
+                <img src="images/juece/tf/ybdf.gif" alt="">
+            </div>
+         </div>
+         <div class="zero">
+            <img src="images/juece/qdl/fxpg.png" alt="">
+        </div>
+        <div class="three">
+          <div class="left" @click="changleft(1)">
+            <img src="images/juece/qdl/left2.png" alt="">
+          </div>
+          <div class="right" @click="changright(1)">
+            <img src="images/juece/qdl/right2.png" alt="">
+          </div>
+          <van-swipe class="my-swipe" indicator-color="blue" ref="one">
+        <van-swipe-item >
+          <div class="onex" @click="sub(2)" :v-model="code">
+            <div class="ones">台风致灾</div>
+            <img src="images/juece/tf/pgtf.png" alt="">
+        </div>
+        <div class="onex" @click="sub(3)" :v-model="code">
+          <div class="ones">农业大棚</div>
+          <img src="images/juece/tf/pgny.png" alt="">
+      </div>
+        </van-swipe-item>
+        <van-swipe-item>
+          <div class="onex" @click="sub(4)" :v-model="code">
+            <div class="ones">轨道交通</div>
+            <img src="images/juece/tf/pgjt.png" alt="">
+        </div>
+        <div class="onex" @click="sub(5)" :v-model="code">
+          <div class="ones">城市洪涝</div>
+          <img src="images/juece/tf/pgjl.jpg" alt="">
+      </div>
+        </van-swipe-item>
+          </van-swipe>
+        </div>
+        <div class="zero">
+        <img src="images/juece/qdl/skxx.png" alt="">
+        </div>
+        <div class="three">
+          <div class="left" @click="changleft(2)">
+            <img src="images/juece/qdl/left2.png" alt="">
+          </div>
+          <div class="right" @click="changright(2)">
+            <img src="images/juece/qdl/right2.png" alt="">
+          </div>
+          <van-swipe class="my-swipe" indicator-color="blue"  ref="two">
+        <van-swipe-item>
+          <div class="onex" @click="sub(6)" :v-model="code">
+            <div class="ones">降水</div>
+            <img src="images/juece/tf/skjs.png" alt="">
+        </div>
+        <div class="onex" @click="sub(7)" :v-model="code">
+          <div class="ones">大风</div>
+          <img src="images/juece/tf/skdf.png" alt="">
+      </div>
+        </van-swipe-item>
+        <van-swipe-item>
+          <div class="onex" @click="sub(8)" :v-model="code">
+            <div class="ones">雷达</div>
+            <img src="images/juece/tf/skld.gif" alt="">
+
+        </div>
+        <div class="onex" @click="sub(9)" :v-model="code">
+          <div class="ones">预警</div>
+          <img src="images/juece/tf/skyj.jpg" alt="">
+      </div>
+        </van-swipe-item>
+          </van-swipe>
+        </div>
+ 
+        <div class="tk" v-show="isShow">
+        <div class="five" >
+          <div class="fivex onex">
+              <div class="ones">{{fxy}}</div>
+              <!-- <div v-html="msg"> -->
+            <div class="one0">
+              {{name}}
+               <span>{{lxq}}</span> 
+             </div>
+            <!-- </div> -->
+            <img  :src="tikture" alt="" >
+        </div>
+         <div class="xxt" @click="close">
+          <img src="images/juece/tk/close.png" alt="">
+         </div>
+         </div>
+        </div>
+    </div>
+    <script>
+        //1.创建一个vue实例对象
+        let vue=new Vue({
+            //2.告诉vue实例对象,将来需要控制界面上那个区域
+            el:'#app',
+            //3.告诉vue实例对象,被控制区域的数据是什么
+            data:{
+              lxq:"",
+              name:"",
+              fxy:"",
+               isShow:false,
+               tikture:"",
+              //  msg:"",
+               code:"",
+                obj:[{
+                              code:"1",
+                              obj1:"降水",
+                              obj3:"",
+                              koj:" 受台风“梅花”外围及本体影响，14-15日本市大部有暴雨、局部大暴雨。主要降水时段出现在14日傍晚到15日早晨，累积雨量50～80毫米，局部地区100～150毫米，最大小时雨强40～60毫米。",
+                              images:"images/juece/tf/ybjs.gif"
+                          },
+                          {
+                              code:"2",
+                              obj1:"大风",
+                              obj3:"",
+                              koj:" 本市今天（14日）下午起风力逐渐增大到5级阵风6～7级，沿江沿海地区阵风7～9级，最强影响时段出现在今天（14日）傍晚到15日早晨，最大阵风增强到8～10级，郊区9～11级，沿江沿海地区11～13级，洋山港区和上海市沿海海面12～14级，15日白天风力将明显减小。",
+                              images:"images/juece/tf/ybdf.gif"
+                          },
+                          {
+                              code:"3",
+                              obj1:"台风致灾",
+                              obj3:"",
+                              koj:"",
+                              images:"images/juece/tf/pgtf.png"
+                          },
+                          {
+                              code:"4",
+                              obj1:"农业大棚",
+                              obj3:"",
+                              koj:"",
+                              images:"images/juece/tf/pgny.png"
+                          },
+                          {
+                              code:"5",
+                              obj1:"轨道交通",
+                              obj3:"",
+                              koj:"",
+                              images:"images/juece/tf/pgjt.png"
+                          },
+                          {
+                              code:"6",
+                              obj1:"城市洪涝",
+                              obj3:"",
+                              koj:"",
+                              images:"images/juece/tf/pgjl.jpg"
+                          },
+                          {
+                              code:"7",
+                              obj1:"降水",
+                              obj3:"",
+                              koj:"",
+                              images:"images/juece/tf/skjs.png"
+                          },
+                          {
+                              code:"8",
+                              obj1:"大风",
+                              obj3:"",
+                              koj:"",
+                              images:"images/juece/tf/skdf.png"
+                          },
+                          {
+                              code:"9",
+                              obj1:"雷达",
+                              obj3:"",
+                              koj:"",
+                              images:"images/juece/tf/skld.gif"
+                          },
+                          {
+                              code:"10",
+                              obj1:"预警",
+                              obj3:"",
+                              koj:"",
+                              images:"images/juece/tf/skyj.jpg"
+                          },
+
+                     ]
+            },
+             //专门用于 存储监听事件回调函数
+             methods:{
+              sub(kid){
+                this.code=this.obj[kid].code;
+                console.log(this.code);
+                this.fxy=this.obj[kid].obj1;
+                console.log(this.fxy)
+                this.name=this.obj[kid].koj;
+                this.lxq=this.obj[kid].obj3;
+                this.isShow=true;
+                this.tikture=this.obj[kid].images;
+                // this.msg=`<div class="one0">受强雷暴云团影响，未来6小时内本市中北部地区将出现阵雨或雷雨天气<span>...`+this.obj.obj1+`</span> </div>
+              },
+              changleft(x){
+                  if(x==1){
+                  this.$refs.one.prev();
+                  };
+                  if(x==2){
+                  this.$refs.two.prev();
+                  };
+              },
+              changright(y){
+                  if(y==1){
+                  this.$refs.one.next();
+                  };
+                  if(y==2){
+                  this.$refs.two.next();
+                  };
+              },
+              close(){
+                  this.isShow=false
+              }
+             },
+            //专门用于定义计算机属性的
+            computed:{},
+            //专门用于定义局部过滤器的
+            filters:{}
+        });
+    </script>
+</body>
+</html>
